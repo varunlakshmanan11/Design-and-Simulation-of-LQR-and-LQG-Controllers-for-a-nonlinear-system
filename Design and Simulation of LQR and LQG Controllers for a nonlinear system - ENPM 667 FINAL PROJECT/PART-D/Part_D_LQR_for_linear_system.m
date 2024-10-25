@@ -1,0 +1,69 @@
+% Part_D_LQR for linear system
+
+% The Parameters given for system
+m1=100; % in kg
+m2=100; % in kg
+M=1000; % in kg
+l1=20; % in meters
+l2=10; % in meters
+g=9.81; % m/s
+% implementing Matrices A and B
+A=[0 1 0 0 0 0; 
+    0 0 -(g*m1)/M 0 -(g*m2)/M 0;
+    0 0 0 1 0 0;
+    0 0 -((M+m1)*g)/(M*l1) 0 -(m2*g)/(M*l1) 0;
+    0 0 0 0 0 1;
+    0 0 -(m1*g)/(M*l2) 0 -(g*(M+m2))/(M*l2) 0];
+
+B=[0; 1/M; 0; 1/(M*l1); 0; 1/(M*l2)];
+% The Initial Conditions for the system is given.
+% x(t) = [x, x_dot, theta_1, theta_1_dot, theta_2, theta_2_dot].
+x_initial = [0;0;20;0;40;0]; 
+% The Initial Displacement is zero. 
+% The Values of Q and R are assumed.
+Q=[20 0 0 0 0 0;
+   0 200 0 0 0 0;
+   0 0 1000 0 0 0;
+   0 0 0 1000 0 0;
+   0 0 0 0 200 0;
+   0 0 0 0 0 20];
+R=0.0005;
+C = eye(6);% C = I, Which is found by using eye function.
+
+% Considering Matrix D is zero.
+D = 0;
+% The Response of the system for the given initial conditions is 
+disp("The State Response for initial conditions:")
+lin_system = ss(A,B,C,D);% The state space of the linearized system is calculated using inbuilt MATLAB function ss
+
+% Inbuilt Functions in MATLAB are used for LQR controller
+disp(" Linear System Output: ")
+[K, P, Poles] = lqr(A,B,Q,R);
+
+disp("P :")
+disp(P); % Print P matrix 
+disp("K :")
+disp(K); % Print K matrix
+disp("Poles:")
+disp(Poles); % Print Poles of the system
+
+% The Response of the system when A = (A-BK)x for closed loop system
+disp("The State Space Response for closed loop system" )
+A1 = A-(B*K);
+
+% Implementing LQR controller for lin_system1
+disp(" Linear System Output: ")
+[K, P, Poles] = lqr(A1,B,Q,R);
+
+disp("P :  ")
+disp(P); % Print P matrix for second system
+disp("K :  ")
+disp(K); % Print K matrix for second system
+disp("Poles:  ")
+disp(Poles); % Print Poles of the second system
+
+
+lin_system1 = ss(A1,B,C,D); 
+figure
+initial(lin_system1,x_initial)
+grid on
