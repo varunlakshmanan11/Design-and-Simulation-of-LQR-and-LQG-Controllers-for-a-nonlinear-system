@@ -2,7 +2,7 @@
 
 This is a group project of 3 Members where we designed and implemented LQR and LQG controllers for a non-linear system as part of our final project for the course ENPM - 667 Control of Robotics systems.
 
-General instructions 
+## General instructions 
 
 a) Use MATLAB editor to run all the fiiles found in the folders
 
@@ -10,6 +10,7 @@ b) we have used the Controls system toolbox for LQG controller, kindly run the P
 
 C)Finally click run on the editor to run the file 
 
+## File Explanations
 
 1)Part_C_Controllability.m -  Just a simple matlab file to find the controllability matrix and find the conditions matching the controllability
 
