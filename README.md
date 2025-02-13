@@ -1,6 +1,4 @@
-## ENPM - 667 Control of Robotics Systems Final Project
-
-Design and Simulation of LQR and LQG Controllers for a nonlinear system
+## Design and Simulation of LQR and LQG Controllers for a nonlinear system
 
 This is a group project of 3 Members where we designed and implemented LQR and LQG controllers for a non-linear system as part of our final project for the course ENPM - 667 Control of Robotics systems.
 
@@ -26,3 +24,8 @@ C)Finally click run on the editor to run the file
 6)Part_F_Luenberger_observer_non_lin.m- Used luenberger observer on non-linear systems using th observable C matrices
 
 8)Part_G_LQG_Non_Linear.m- to control  non linear system - for this program we have used 'Control Systems' tool box in MATLAB
+
+## Contributors
+
+Nitish Ravisankar Raveendran - rrnitish@umd.edu
+Sai Jagadeesh Muralikrishnan - jagkrish@umd.edu
